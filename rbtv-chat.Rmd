@@ -88,7 +88,10 @@ Wären die Daten normalverteilt, wäre dieser Boxplot symetrisch. Im oberen Teil
 Das Histogramm ist ebenfalls ein Mittel, um die Normalverteiltheit zu prüfen. Außerdem wird hier besser visualisiert, wo sich die meisten Daten befinden.
 
 ```{r, echo=FALSE, message=FALSE}
-ggplot(data=numberOfChats, aes(numberOfChats$`Number of Chats`)) + geom_histogram()
+ggplot(data=numberOfChats, aes(numberOfChats$`Number of Chats`)) + geom_histogram() + 
+  labs(title = "Histogram über die Anzahl der Chatnachrichten",
+       x = "Anzahl der Nachrichten",
+       y = "Anzahl")
 ```
 
 An dieser Stelle wird ebenfalls bestätigt, dass die gegebenen Daten aus mehreren Ausreißern besteht und nicht normalverteilt ist.
@@ -109,8 +112,14 @@ Da wir festgestellt haben, dass die Daten nicht normalverteilt sind, können wir
 
 Als nächstes betrachten wir immer noch die Anzahl der täglich geschriebnen Nachrichten pro Tag in einem Dot-Plot.
 ```{r, echo=FALSE}
-ggplot(data = numberOfChats, aes(x = Date, y = `Number of Chats`)) + geom_point() + geom_smooth()
+ggplot(data = numberOfChats, aes(x = Date, y = `Number of Chats`)) + geom_point() + geom_smooth() + 
+  labs(title = "Anzahl der Chatnachrichten über dem gesamten Zeitraum",
+       x = "Zeitreichweite",
+       y = "Anzahl der Chatnachrichten")
 ```
+
+Am Anfang und am Ende der Linie geht der graue Bereich (Konfidenzintervallgrenzen) außeinander. Da diese Linie nichts Vorhersagen kann, geht dieser Intervall in die Breite. D.h. eigentlich nur, dass ab dem Zeitpunkt außerhalb des Chartes keine Aussage getroffen werden kann.
+
 Wie zu stehen ist, kann ein leichter Abwertstrend zu verzeichnet werden. Interessant sind die Ausreiser über 40.000 Nachrichten pro Tag, die eine hohe Chatbeteiligung beinhalten. Nun lassen wir uns mal die Daten ausgeben.
 ```{r, echo=FALSE}
 numberOfChats[numberOfChats$`Number of Chats` > 40000,]
@@ -130,7 +139,10 @@ numberOfChats[numberOfChats$`Number of Chats` > 40000,]
 Da wir nun festgestellt haben, dass ein leichte aber linearen Abwertstrend existiert, können wir uns im folgenden Chart die einzelnen Wochentage nochmal genauer betrachten.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-ggplot(data = numberOfChats, aes(x = Date, y = `Number of Chats`)) + geom_point() + geom_smooth() + facet_grid(. ~ Weekname)
+ggplot(data = numberOfChats, aes(x = Date, y = `Number of Chats`)) + geom_point() + geom_smooth() + facet_grid(. ~ Weekname) + 
+  labs(title = "Anzahl der Chatnachrichten über dem gesamten Zeitraum pro Tag",
+       x = "Zeitreichweite pro Tag",
+       y = "Anzahl der Chatnachrichten")
 ```
 
 Zu sehen ist ein drastischer Rückgang am \textbf{Freitag}, \textbf{Donnerstag} und am \textbf{Dienstag}. Der Freitag ist sehr auffällig, da die Intervallgrenzen dort sehr ausschlagen. Das heißt die Anzahl der Chatnachrichten variieren zwischen niedrig und sehr hoch. \textbf{Samstag} ist am stabilsten und hat sogar einen leichten Trend nach oben. Der \textbf{Mittwoch} scheint stabil zu sein.

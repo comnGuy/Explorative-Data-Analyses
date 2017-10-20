@@ -156,3 +156,13 @@ Und bestimmt besteht die Möglichkeit noch weitere Information den Datensatz hin
 ## Textmining
 
 Außerdem wäre es interessant ein Sentimentindex über den Chat zu bilden. Was ist das? Zum Beispiel bestünde die Möglichkeit einen Trend im Chat zu ermitteln. Ist der Chat gerade positiv oder negativ gestimmt? Wenn solch ein Index existiert könnte dies unteranderem Live eingebunden werden oder als Feedback für die Moderatoren genommen werden, wenn sie gerade etwas total falsch machen.
+
+Weiterhin habe ich noch zwei WordClouds vom 13.07.2016 und 14.07.2016 erstellt.
+
+\textbf{13.07.2017}
+
+![image](pictures/user-single-word_13_07_2017.png)
+
+\textbf{14.07.2017}
+
+![image](pictures/2017_07_14_wordcloud_rb.png)
